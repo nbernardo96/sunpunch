@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import '../css/home.css'
+import '../css/navbar.css'
+import '../css/form.css'
 import {
     Container,
     Navbar,

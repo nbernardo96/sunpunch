@@ -6,8 +6,9 @@
     justify-content: center;
 }
 
-.sunpunch-nav {
-    background: rgb(136, 178, 255);
+.sunpunch-header {
+    text-align: center;
+    margin-top: 50px;
 }
 
 .form-container {

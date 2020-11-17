@@ -1,0 +1,17 @@
+.employee-info {
+    /* background: pink; */
+}
+
+.clockin-btn {
+    border: none !important;
+    background: rgb(0, 216, 47) !important;
+}
+
+.clockout-btn {
+    border: none !important;
+    background: rgb(235, 59, 59) !important;
+}
+
+.clockin-table {
+    margin-top: 7%;
+}

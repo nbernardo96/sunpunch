@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Homepage from "./containers/home";
 import Login from "./containers/login";
 import Signup from "./containers/signup";
-import Test from "./containers/test";
+import Dashboard from "./containers/dashboard";
 
 
 
@@ -13,7 +13,7 @@ const BaseRouter = () => (
         <Route exact path="/" component={Homepage} />
         <Route path="/Login" component={Login} />
         <Route path="/Signup" component={Signup} />
-        <Route path="/Test" component={Test} />
+        <Route path="/Dashboard" component={Dashboard} />
     </Switch>
 );
 

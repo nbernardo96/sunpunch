@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import '../css/home.css'
+import '../css/navbar.css'
+import '../css/form.css'
 import {
     Container,
     Navbar,
@@ -35,7 +36,6 @@ class Login extends Component {
                 <Col xs={8}>
                 <Form>
                     <Form.Group controlId="formBasicEmail">
-                        {/* <Form.Label>Email address</Form.Label> */}
                         <Form.Control type="email" placeholder="Enter email"/>
                         <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
@@ -44,7 +44,6 @@ class Login extends Component {
 
 
                     <Form.Group controlId="formBasicPassword">
-                        {/* <Form.Label>Password</Form.Label> */}
                         <Form.Control type="password" placeholder="Password"/>
                         <a className="text-muted signup-link" href="/signup">New user? Signup</a>
                     </Form.Group>
