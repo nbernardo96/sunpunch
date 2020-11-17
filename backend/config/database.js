@@ -9,17 +9,15 @@ const settings = {
         password: process.env.MSSQL_DEV_PASSWORD,
         database: process.env.MSSQL_DEV_DATABASE,
         port: Number.parseInt(process.env.MSSQL_DEV_PORT)
-},
-migrations: {
-    tableName: 'migrations',
-    directory: path.join(path.resolve(__dirname, '..'), 'database','migrations'),
-},
-seeds: {
-    directory: path.join(path.resolve(__dirname, '..'), 'database','seeds'),
-},
-debug: true
+    },
+    migrations: {
+        tableName: 'migrations',
+        directory: path.join(path.resolve(__dirname, '..'), 'database','migrations'),
+    },
+    seeds: {
+        directory: path.join(path.resolve(__dirname, '..'), 'database','seeds'),
+    },
+    debug: true
 };
-
-console.log(process.env.MSSQL_CLIENT)
 
 module.exports= settings;
