@@ -1,10 +1,10 @@
 import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 import BaseRouter from './routes';
 
 function App() {
   return (
-        <BaseRouter />
+    <BaseRouter />
   );
 }
 

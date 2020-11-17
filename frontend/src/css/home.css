@@ -1,0 +1,22 @@
+.h1 {
+    text-align: center;
+}
+
+.row {
+    justify-content: center;
+}
+
+.sunpunch-nav {
+    background: rgb(136, 178, 255);
+}
+
+.form-container {
+    background: rgb(206, 222, 252);
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-top: 5%;
+}
+
+.signup-link {
+    font-size: 12.4px;
+}

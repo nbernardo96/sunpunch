@@ -12,7 +12,7 @@ import {
 } from 'react-bootstrap';
 
 
-class Homepage extends Component {
+class Login extends Component {
 
     render = () => (
         <div>
@@ -27,6 +27,7 @@ class Homepage extends Component {
             </Nav>
             </Navbar.Collapse>
         </Navbar>
+
 
         <Container className="rounded form-container">
             <h3 className="text-center">Login</h3>
@@ -54,15 +55,8 @@ class Homepage extends Component {
                 </Col>
             </Row>
         </Container>
-
-        {/* 
-            TODO:
-                1. create page for if user is logged in - dashboard
-                2. display login page if user is not logged in
-        */}
-
     </div>
     );
 }
 
-export default Homepage;
+export default Login;

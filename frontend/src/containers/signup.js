@@ -12,7 +12,7 @@ import {
 } from 'react-bootstrap';
 
 
-class Homepage extends Component {
+class Signup extends Component {
 
     render = () => (
         <div>
@@ -28,25 +28,46 @@ class Homepage extends Component {
             </Navbar.Collapse>
         </Navbar>
 
+
         <Container className="rounded form-container">
-            <h3 className="text-center">Login</h3>
+            <h3 className="text-center">Signup</h3>
             <Row>
                 <Col xs={8}>
                 <Form>
+
+                    <Form.Group className="mt-4 mb-4">
+                        <Row>
+                            <Col>
+                                <Form.Control placeholder="First name" />
+                            </Col>
+                            <Col>
+                                <Form.Control placeholder="Last name" />
+                            </Col>
+                        </Row>
+                    </Form.Group>
+
                     <Form.Group controlId="formBasicEmail">
-                        {/* <Form.Label>Email address</Form.Label> */}
                         <Form.Control type="email" placeholder="Enter email"/>
                         <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                         </Form.Text>
                     </Form.Group>
 
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Control type="email" placeholder="Confirm email"/>
+                        <Form.Text className="text-muted">Re-enter your email for confirmation</Form.Text>
+                    </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
-                        {/* <Form.Label>Password</Form.Label> */}
                         <Form.Control type="password" placeholder="Password"/>
-                        <a className="text-muted signup-link" href="/signup">New user? Signup</a>
+                        <Form.Text className="text-muted">Enter a password</Form.Text>
                     </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Control type="password" placeholder="Confirm Password"/>
+                        <Form.Text className="text-muted">Re-enter your password for confirmation</Form.Text>
+                    </Form.Group>
+
                     <Button type="submit">
                         Submit
                     </Button>
@@ -54,15 +75,8 @@ class Homepage extends Component {
                 </Col>
             </Row>
         </Container>
-
-        {/* 
-            TODO:
-                1. create page for if user is logged in - dashboard
-                2. display login page if user is not logged in
-        */}
-
     </div>
     );
 }
 
-export default Homepage;
+export default Signup;
