@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-
+const router = require('./routes/index');
 const app = express()
 const port = 5000
 
@@ -14,12 +14,9 @@ const middleware = {
     cors: cors()
 }
 
+app.use(router)
 app.use([middleware.cors, middleware.logger])
 
-
-app.get('/', (req, res) => {
-    res.send('<h1>Hello</h1>')
-})
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}...`)

@@ -1,13 +1,36 @@
 // Authentication stuff, new user, and remove user
-import knex from '../knexfile';
-
-// findAll
+const db = require('../database/knex');
 
 
-// findByID
+const User = () => ({
+        // findAll
+        findAll: async (req, res) => {
+            const users = db('employee').select()
+            .then(records => {
+                for (record of records) {
+                    console.log(record['employee_name']);
+                }
+            }).catch(err => {
+                console.log('Error was found!', err);
+            }).finally(() => {
+                db.destroy();
+            })
+            return users;
+        },
+        
+        // findByID
+        findByID: '',
 
-// store
+        // store
+        store:'',
+        
+        // update
+        update:'',
 
-// update
+        // destroy
+        destroy:''
+    }
+)
 
-// destroy
+
+module.exports = User
