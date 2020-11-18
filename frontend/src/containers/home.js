@@ -9,7 +9,8 @@ import {
     Button,
     Form,
     Row,
-    Col
+    Col,
+    Image
 } from 'react-bootstrap';
 
 
