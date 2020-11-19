@@ -15,6 +15,12 @@ import {
 } from 'react-bootstrap';
 
 class Login extends Component {
+    
+    constructor(props) {
+        super(props)
+
+    }
+
 
     render = () => (
         <div>
@@ -53,7 +59,7 @@ class Login extends Component {
                 </Row>
                 <Row className="mt-3">
                     <Col>
-                        Email: nicole@sunshinelifehealth.com
+                        Email: {this.props.email}
                     </Col>
                 </Row>
         </Container>
