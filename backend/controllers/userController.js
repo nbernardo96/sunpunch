@@ -22,8 +22,9 @@ const User = () => ({
             await db('employee').select()
             .where({ employee_email: req.body.username })
             .then(user => {
-                if (user && user.length == 1){
-                    res.json({valid: true})
+                console.log(user)
+                if (user && user.length === 1 && user[0].employee_password === req.body.password){
+                    res.json({...user[0], valid: true})
                 } else {
                     res.json({valid: false})
                 }
