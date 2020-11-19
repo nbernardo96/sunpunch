@@ -11,11 +11,13 @@ const middleware = {
         console.log(`Path: ${req.url} [${req.method}]`)
         next()
     },
-    cors: cors()
+    cors: cors(),
+    enableJson: express.json(),
+    enableURLEncoded: express.urlencoded({ extended: true })
 }
 
+app.use([middleware.enableJson, middleware.enableURLEncoded, middleware.cors, middleware.logger])
 app.use(router)
-app.use([middleware.cors, middleware.logger])
 
 
 app.listen(port, () => {
