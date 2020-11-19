@@ -2,6 +2,11 @@
     /* background: pink; */
 }
 
+.dashboard-icons {
+    width: 20px;
+    height: 20px;
+}
+
 .clockin-btn {
     border: none !important;
     background: rgb(0, 216, 47) !important;
@@ -14,4 +19,9 @@
 
 .clockin-table {
     margin-top: 7%;
+}
+
+.scrollable {
+    background: pink;
+    overflow-y: scroll;
 }

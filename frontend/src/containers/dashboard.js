@@ -13,6 +13,10 @@ import {
     Table,
     Image
 } from 'react-bootstrap';
+import user from '../images/user.png';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+
+
 
 class Login extends Component {
     
@@ -36,14 +40,10 @@ class Login extends Component {
             </Navbar.Collapse>
         </Navbar>
 
-        {/* <Image src="https://picsum.photos/100/250" fluid />
-        <Image src="https://www.flaticon.com/free-icon/user_848006" fluid /> */}
-
-
         <Container className="mt-5 ml-5 employee-info" fluid>
                 <Row>
                     <Col>
-                    Name: Nicole Bernardo
+                    <Image src={user} className="dashboard-icons"/> Name: Nicole Bernardo
                     </Col>
                     <Col>
                         <Button size="sm" className="clockin-btn">Clock in</Button>{' '}
@@ -64,36 +64,176 @@ class Login extends Component {
                 </Row>
         </Container>
 
-        <Table striped bordered hover size="sm" responsive className="clockin-table">
-            <thead>
-                <tr>
-                <th>Date</th>
-                <th>Clocked In</th>
-                <th>Clocked Out</th>
-                <th>Notes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <td>October 27, 2020</td>
-                <td>9:30 AM</td>
-                <td>6:30 PM</td>
-                <td>worked in call center and processed applications</td>
-                </tr>
-                <tr>
-                <td>October 28, 2020</td>
-                <td>9:32 AM</td>
-                <td>6:48 PM</td>
-                <td>call center</td>
-                </tr>
-                <tr>
-                <td>October 29, 2020</td>
-                <td>6:23 AM</td>
-                <td>3:00 PM</td>
-                <td>was asked to come in early, left early</td>
-                </tr>
-            </tbody>
-        </Table>
+            <Table striped bordered hover size="sm" responsive className="clockin-table">
+                <thead>
+                    <tr>
+                    <th>Date</th>
+                    <th>Clocked In</th>
+                    <th>Clocked Out</th>
+                    <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>October 27, 2020</td>
+                    <td>9:30 AM</td>
+                    <td>6:30 PM</td>
+                    <td>worked in call center and processed applications</td>
+                    </tr>
+                    <tr>
+                    <td>October 28, 2020</td>
+                    <td>9:32 AM</td>
+                    <td>6:48 PM</td>
+                    <td>call center</td>
+                    </tr>
+                    <tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr>
+                    <tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr><tr>
+                    <td>October 29, 2020</td>
+                    <td>6:23 AM</td>
+                    <td>3:00 PM</td>
+                    <td>was asked to come in early, left early</td>
+                    </tr>
+                </tbody>
+            </Table>
+
+        <footer className="footer py-3">
+            This is a footer
+        </footer>
 
     </div>
     );

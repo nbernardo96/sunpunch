@@ -1,3 +1,10 @@
 .sunpunch-nav {
     background: rgb(136, 178, 255);
 }
+
+.footer {
+    background:  rgb(136, 178, 255);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

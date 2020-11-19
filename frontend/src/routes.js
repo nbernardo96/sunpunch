@@ -5,6 +5,7 @@ import Homepage from "./containers/home";
 import Login from "./containers/login";
 import Signup from "./containers/signup";
 import Dashboard from "./containers/dashboard";
+import Test from "./containers/test"
 
 class DebugRouter extends BrowserRouter {
   constructor(props){
@@ -24,23 +25,11 @@ class DebugRouter extends BrowserRouter {
 const BaseRouter = () => (
     <DebugRouter>
         <Switch>
-
-            <Route exact path="/">
-                <Homepage />
-            </Route>
-
-            <Route path="/login">
-                <Login />
-            </Route>
-
-            <Route path="/signup">
-                <Signup />
-            </Route>
-
-            <Route path="/dashboard">
-                <Dashboard />
-            </Route>
-
+            <Route exact path="/" component={Homepage} />
+            <Route path="/Login" component={Login} />
+            <Route path="/Signup" component={Signup} />
+            <Route path="/Dashboard" component={Dashboard} />
+            <Route path="/Test" component={Test} />
         </Switch>
     </DebugRouter>
 );

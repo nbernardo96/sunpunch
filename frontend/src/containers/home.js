@@ -9,7 +9,8 @@ import {
     Button,
     Form,
     Row,
-    Col
+    Col,
+    Image
 } from 'react-bootstrap';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
