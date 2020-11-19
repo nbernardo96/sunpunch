@@ -23,7 +23,7 @@ class Homepage extends Component {
         this.state = {
             username: '',
             password: '',
-            valid: false
+            user: {}
         }
 
         this.changeEmail = this.changeEmail.bind(this)
@@ -43,7 +43,7 @@ class Homepage extends Component {
 
     render = () => {
         
-        return !this.state.valid ? (
+        return Object.keys(this.state.user).length === 0  || !this.state.user.valid ? (
         <div>
         <Navbar className="sunpunch-nav" expand="lg">
             <Navbar.Brand href="/">Sunpunch</Navbar.Brand>
@@ -94,7 +94,7 @@ class Homepage extends Component {
 
     </div>
     ): 
-        <Dashboard email= {this.state.username} />
+        <Dashboard user = { this.state.user } />
     }
     
     submitHandler(e) {
@@ -103,7 +103,10 @@ class Homepage extends Component {
             username: this.state.username,
             password: this.state.password
         }).then(res => {
-            this.setState({ valid: res.data.valid })
+            this.setState({ user: res.data })
+            console.log(this.state.user)
+            console.log(this.state.username)
+            console.log(this.state.password)
         })
     }
 }

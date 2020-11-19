@@ -43,7 +43,7 @@ class Login extends Component {
         <Container className="mt-5 ml-5 employee-info" fluid>
                 <Row>
                     <Col>
-                    <Image src={user} className="dashboard-icons"/> Name: Nicole Bernardo
+                    <Image src={user} className="dashboard-icons"/> Name: {this.props.user.employee_name}
                     </Col>
                     <Col>
                         <Button size="sm" className="clockin-btn">Clock in</Button>{' '}
@@ -54,12 +54,12 @@ class Login extends Component {
                 </Row>
                 <Row className="mt-2">
                     <Col>
-                        Department: Programming
+                        Department: {this.props.user.department}
                     </Col>
                 </Row>
                 <Row className="mt-3">
                     <Col>
-                        Email: {this.props.email}
+                        Email: {this.props.user.employee_email}
                     </Col>
                 </Row>
         </Container>

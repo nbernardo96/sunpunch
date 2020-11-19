@@ -22,7 +22,7 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            valid: false
+            user: {}
         }
         this.changeEmail = this.changeEmail.bind(this)
         this.changePassword= this.changePassword.bind(this)
@@ -41,7 +41,7 @@ class Login extends Component {
 
     render = () => {
         
-        return !this.state.valid ? (
+        return Object.keys(this.state.user).length === 0 || !this.state.user.valid ? (
 
         <div>
         <Navbar className="sunpunch-nav" expand="lg">
@@ -83,7 +83,7 @@ class Login extends Component {
         </Container>
     </div>
     ) :
-    <Dashboard email={this.state.username} /> 
+    <Dashboard user={this.state.user} /> 
 }
     
     submitHandler(e) {
@@ -92,7 +92,8 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password
         }).then(res => {
-            this.setState({ valid: res.data.valid })
+            this.setState({ user: res.data })
+            console.log(this.state.user)
         })
     }
 }
