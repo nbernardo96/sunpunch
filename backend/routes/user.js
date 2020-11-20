@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Employee = require('../controllers/userController');
-const bodyParser = require('body-parser');
+
 
 router.get('/', async (req, res) => {
     try {
@@ -11,6 +11,10 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.post('/login', Employee().findByEmail)
+router.get('/findAll', Employee().findAll)
+router.post('/login', Employee().signIn)
+router.post('/register', Employee().store)
+
+
 
 module.exports = router;

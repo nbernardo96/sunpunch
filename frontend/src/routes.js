@@ -1,11 +1,12 @@
-import React from "react";
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 
 import Homepage from "./containers/home";
 import Login from "./containers/login";
 import Signup from "./containers/signup";
 import Dashboard from "./containers/dashboard";
 import Test from "./containers/test"
+import { Button } from "react-bootstrap";
 
 class DebugRouter extends BrowserRouter {
   constructor(props){
@@ -21,15 +22,12 @@ class DebugRouter extends BrowserRouter {
 }
 
 
-
-const BaseRouter = () => (
+const BaseRouter = ({ loadUser, onRouteChange }) => (
     <DebugRouter>
         <Switch>
-            <Route exact path="/" component={Homepage} />
-            <Route path="/Login" component={Login} />
-            <Route path="/Signup" component={Signup} />
-            <Route path="/Dashboard" component={Dashboard} />
-            <Route path="/Test" component={Test} />
+            <Route path="/" component={ () => <Homepage loadUser={ loadUser } onRouteChange={ onRouteChange } /> } />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/test" component={Test} />
         </Switch>
     </DebugRouter>
 );

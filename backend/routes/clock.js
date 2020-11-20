@@ -1,3 +1,7 @@
 const db = require('../knexfile');
+const router = require('express').Router();
+const Clock = require('../controllers/clockController');
 
-console.log(db);
+router.post('/clockIn', Clock().punchIn);
+router.post('/clockOut', Clock().punchOut);
+module.exports = router;
