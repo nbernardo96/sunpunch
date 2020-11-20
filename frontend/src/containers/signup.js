@@ -22,9 +22,9 @@ class Signup extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-                <Nav.Link href="/" className="sunpunch-link-home">Home</Nav.Link>
-                <Nav.Link href="/login" className="sunpunch-links">Login</Nav.Link>
-                <Nav.Link href="/signup" className="sunpunch-links">Signup</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Link href="/signup">Signup</Nav.Link>
             </Nav>
             </Navbar.Collapse>
         </Navbar>

@@ -50,9 +50,9 @@ class Homepage extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-                <Nav.Link href="/" className="sunpunch-link-home">Home</Nav.Link>
-                <Nav.Link href="/login" className="sunpunch-links">Login</Nav.Link>
-                <Nav.Link href="/signup" className="sunpunch-links">Signup</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Link href="/signup">Signup</Nav.Link>
             </Nav>
             </Navbar.Collapse>
         </Navbar>
@@ -86,12 +86,6 @@ class Homepage extends Component {
                 </Col>
             </Row>
         </Container>
-        {/* 
-            TODO:
-                1. create page for if user is logged in - dashboard
-                2. display login page if user is not logged in
-        */}
-
     </div>
     ): 
         <Dashboard user = { this.state.user } />
