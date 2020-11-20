@@ -5,14 +5,30 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
+import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+import 'react-data-components/css/table-twbs.css';
+import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import authReducer from "./store/reducers/auth";
 
+const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const rootReducer = combineReducers({
+  auth: authReducer
+});
+
+const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)));
+const app = (
+  <React.StrictMode>
+    <Provider store={ store }>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);
 
 ReactDOM.render(
-  <React.StrictMode>
-      <App />
-  </React.StrictMode>,
+  app,
   document.getElementById('root')
 );
 

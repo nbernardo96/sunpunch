@@ -11,12 +11,15 @@ import {
     Row,
     Col,
     Table,
-    Image
+    Image,
+    Modal,
 } from 'react-bootstrap';
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import user from '../images/user.png';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import axios from 'axios';
 
+var DataTable = require('react-data-components').DataTable;
 
 class Dashboard extends Component {
     
@@ -73,7 +76,31 @@ class Dashboard extends Component {
                 </Row>
         </Container>
 
-            <Table striped bordered hover size="sm" responsive className="clockin-table">
+                {/* <DataTable
+            keys="name"
+            columns={columns}
+            initialData={data}
+            initialPageLength={5}
+            clockinTable/> */}
+
+            {/* <BootstrapTable
+            data={ data }
+            columns={ columns }
+            /> */}
+
+            {   // NEED TO USE CLOCK BACKEND
+                // <BootstrapTable data={ prop } striped hover pagination version='4' className="container clockin-table">
+                //     <TableHeaderColumn isKey dataField='employee_email'>Employee Email</TableHeaderColumn>
+                //     <TableHeaderColumn dataField='date'>Date</TableHeaderColumn>
+                //     <TableHeaderColumn dataField='clocked_in'>Clocked In</TableHeaderColumn>
+                //     <TableHeaderColumn dataField='clocked_out'>Clocked Out</TableHeaderColumn>
+                //     <TableHeaderColumn dataField='notes'>Notes</TableHeaderColumn>
+                // </BootstrapTable>
+            }
+
+
+
+            {/* <Table striped bordered hover size="sm" responsive className="clockin-table container">
                 <thead>
                     <tr>
                     <th>Date</th>
@@ -101,147 +128,24 @@ class Dashboard extends Component {
                     <td>3:00 PM</td>
                     <td>was asked to come in early, left early</td>
                     </tr>
-                    <tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr><tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr>
                 </tbody>
-            </Table>
+            </Table> */}
+
+            <Modal show={this.state.isOpen} onHide={this.closeModal}>
+                <Modal.Header closeButton>
+                <Modal.Title>{this.state.punched}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Are you sure you would like to {this.state.punched}?</Modal.Body>
+                <Modal.Footer>
+                <Button className="confirm-btn" onClick={this.closeModal}>{this.state.punched}</Button>
+                <Button className="cancel-btn" onClick={this.closeModal}>Cancel</Button>
+                </Modal.Footer>
+            </Modal>
 
         <footer className="footer py-3">
-            This is a footer
+            <div className="attributions">
+                <div>Icons made by <a href="https://www.flaticon.com/authors/becris" title="Becris">Becris</a>, <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>, and <a href="https://icon54.com/" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                </div>
         </footer>
 
     </div>

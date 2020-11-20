@@ -18,10 +18,19 @@
 }
 
 .clockin-table {
-    margin-top: 7%;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 125px;
 }
 
 .scrollable {
     background: pink;
     overflow-y: scroll;
 }
+
+.attributions {
+    font-size: 15px;
+    text-align: center;
+}
+
+/* icon colors: background - #429599 & person - #B3E1E1  */
