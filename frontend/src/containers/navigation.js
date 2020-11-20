@@ -2,10 +2,12 @@ import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 
 const Navigation = ({ onRouteChange, isSignedIn }) => {
-    if (isSignedIn) {
+
+  if (isSignedIn) {
+
       return (
         <Navbar className="sunpunch-nav" expand="lg">
-                    <Navbar.Brand href="/">Sunpunch</Navbar.Brand>
+                    <Navbar.Brand href="#">Sunpunch</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">

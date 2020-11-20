@@ -6,11 +6,12 @@ const User = () => ({
 
         // findAll
         findAll: async (req, res) => {
-            db('employee').select()
+            db('clock').select()
             .then(async records => {
                 res.json(records)
             }).catch(err => {
                 console.log('Error was found!', err);
+                res.json('Error finding users from clock')
             })
 
         },
@@ -54,6 +55,7 @@ const User = () => ({
             
         },
         
+        isAdmin:'',
         // update
         update:'',
 

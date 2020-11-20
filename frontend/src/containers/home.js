@@ -91,7 +91,10 @@ class Homepage extends Component {
         }).then(res => {
             console.log(res)
 
-            if (res.data.employee_email){
+            if (res.data.employee_email && res.data.employee_email === 'maurice@sunshinelifehealth.com'){
+                this.props.loadUser(res)
+                this.props.onRouteChange('admin')
+            }  else if(res.data.employee_email) {
                 this.props.loadUser(res)
                 this.props.onRouteChange('dashboard')
             }

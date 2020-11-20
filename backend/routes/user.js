@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 router.get('/findAll', Employee().findAll)
 router.post('/login', Employee().signIn)
 router.post('/register', Employee().store)
-
+// router.post('/isAdmin', Employee().isAdmin)
 
 
 module.exports = router;

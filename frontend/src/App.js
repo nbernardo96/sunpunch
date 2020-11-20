@@ -6,6 +6,7 @@ import Navigation from './containers/navigation';
 import Homepage from "./containers/home";
 import Login from './containers/login';
 import Signup from './containers/signup';
+import Admin from './containers/admin';
 class App extends Component {
 
   state = {
@@ -38,7 +39,7 @@ class App extends Component {
     
     if (route === 'signout') {
       this.setState({ isSignedIn: false })
-    } else if (route === 'dashboard') {
+    } else if (route === 'dashboard' || route === 'admin') {
       this.setState({ isSignedIn: true })
     }
 
@@ -50,6 +51,8 @@ class App extends Component {
     const {  user, route } = this.state;
 
     switch(route){
+      case 'admin':
+        return <Admin user={ user }/>
       case 'dashboard':
         return <Dashboard user={ user }/>
       case 'home':
