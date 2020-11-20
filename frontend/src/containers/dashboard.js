@@ -19,10 +19,21 @@ import user from '../images/user.png';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import axios from 'axios';
 
-var DataTable = require('react-data-components').DataTable;
+const DataTable = require('react-data-components').DataTable;
 
 class Dashboard extends Component {
     
+    state = {
+        isOpen: false,
+        punched: undefined,
+        selectOut: ''
+    }
+
+    closeModal = e => {
+        this.setState({  selectOut: e.target.outerText })
+        this.setState({ isOpen: false })
+    }
+
     punchInHandler = e =>{
         axios.post('http://localhost:5000/clockIn', { 
             employee_email: this.props.user.email, 
@@ -31,6 +42,9 @@ class Dashboard extends Component {
     }
 
     punchOutHandler = e => {
+        this.setState({ isOpen: true })
+
+        if(this.state.selectOut === 'Okay')
         axios.post('http://localhost:5000/clockOut', { 
             employee_email: this.props.user.email, 
             clock_out: new Date().toLocaleTimeString()
@@ -41,11 +55,8 @@ class Dashboard extends Component {
     
     let prop = {};
 
-    
-
-    
     prop = this.props.user
-
+    console.log(prop)
     
     const { department, email, name } = prop
 
@@ -130,15 +141,14 @@ class Dashboard extends Component {
                     </tr>
                 </tbody>
             </Table> */}
-
             <Modal show={this.state.isOpen} onHide={this.closeModal}>
                 <Modal.Header closeButton>
-                <Modal.Title>{this.state.punched}</Modal.Title>
+                    <Modal.Title>Time </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Are you sure you would like to {this.state.punched}?</Modal.Body>
+                <Modal.Body>Are you sure you would like to clock out?</Modal.Body>
                 <Modal.Footer>
-                <Button className="confirm-btn" onClick={this.closeModal}>{this.state.punched}</Button>
-                <Button className="cancel-btn" onClick={this.closeModal}>Cancel</Button>
+                    <Button className="confirm-btn" onClick={ this.closeModal }>Okay</Button>
+                    <Button className="cancel-btn" onClick={ this.closeModal }>Cancel</Button>
                 </Modal.Footer>
             </Modal>
 

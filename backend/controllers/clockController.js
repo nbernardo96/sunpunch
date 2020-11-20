@@ -3,6 +3,10 @@
 const db = require('../database/knex');
 
 const Clock = () => ({
+    //
+    selectClock: async (req, res) => {
+        
+    },
 
     // punchIn
     punchIn: async (req, res) => {
