@@ -13,6 +13,7 @@ import {
     Table,
     Image,
     Modal,
+    Alert
 } from 'react-bootstrap';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import user from '../images/user.png';
@@ -26,47 +27,37 @@ class Dashboard extends Component {
     state = {
         isOpen: false,
         punched: undefined,
-        selectOut: ''
+        show: false,
+        clocked: '',
+        clockedMsg: ''
     }
 
     closeModal = e => {
-        this.setState({  selectOut: e.target.outerText })
         this.setState({ isOpen: false })
     }
 
-    punchInHandler = e =>{
+    closeAlert = () => this.setState({ show: false, setShow: false })
+
+
+    punchInHandler = e => {
+        this.setState({ show: true, setShow: true, clocked: 'Clocked In!', clockedMsg: 'You have now clocked in. Have a great day!'  })
         axios.post('http://localhost:5000/clockIn', { 
             employee_email: this.props.user.email, 
             clock_in: new Date().toLocaleTimeString()
         })
     }
 
+    clockOutButton = () => this.setState({ isOpen: true })
+
     punchOutHandler = e => {
-        this.setState({ isOpen: true })
+        this.setState({ isOpen: false })
+        this.setState({ show: true, setShow: true, clocked: 'Clocked Out!', clockedMsg: 'You are now clocked out, enjoy the rest of your day!'  })
         const today = new Date()
-        console.log('PUNCH OUT HANDLER')
-        if(this.state.selectOut === 'Okay')
         axios.post('http://localhost:5000/clockOut', { 
             employee_email: this.props.user.email, 
             clock_out: today.toLocaleTimeString('en-US')
         })
     }
-
-    // componentDidMount() {
-    //     axios.get('http://localhost:5000/clock')
-    //         .then(res => {
-                
-    //             this.setState({ employees:  res.data.map(user => {
-    //                 return {
-    //                     clock_in: user.clock_in.split('T')[1].substring(0, 5),
-    //                     clock_date: moment(user.clock_date.split('T')[0]).format('L'),
-    //                     clock_out: user.clock_out ? user.clock_out.split('T')[1].substring(0, 5): null,
-    //                     employee_email: user.employee_email
-    //                 }
-    //             })})
-                
-    //         })
-    // }
 
     render() {
     
@@ -77,8 +68,31 @@ class Dashboard extends Component {
     
     const { department, email, name } = prop
 
+    // var data = [
+    //     { employee_email: 'johnnyappleseed@test.com', clock_date: '11/18/2020', clock_in: '08:30', clock_out: '17:00' },
+    //     { employee_email: 'maryj@test.com', clock_date: '11/18/2020', clock_in: '08:45', clock_out: '17:00' },
+    //     { employee_email: 'ashketchum@test.com', clock_date: '11/18/2020', clock_in: '09:00', clock_out: '17:30' },
+    //     { employee_email: 'papermario@test.com', clock_date: '11/18/2020', clock_in: '09:00', clock_out: '17:30' },
+    //     { employee_email: 'luigi@test.com', clock_date: '11/17/2020', clock_in: '10:30', clock_out: '18:45' },
+    //     { employee_email: 'tomnook@ac.com', clock_date: '11/17/2020', clock_in: '09:30', clock_out: '17:45' },
+    //     { employee_email: 'isabelle@ac.com', clock_date: '11/17/2020', clock_in: '09:30', clock_out: '17:45' },
+    // ];
+
     return (
         <div>
+
+        <Alert show={this.state.show} variant="success" className="text-center">
+            <Alert.Heading>{this.state.clocked}</Alert.Heading>
+            <p>
+            {this.state.clockedMsg}
+            </p>
+            <hr />
+            <div className="text-center">
+            <Button onClick={ this.closeAlert } variant="outline-success">
+                Close
+            </Button>
+            </div>
+        </Alert>
         
         <Container className="mt-5 ml-5 employee-info" fluid>
                 <Row>
@@ -86,10 +100,10 @@ class Dashboard extends Component {
                         <Image src={user} className="dashboard-icons"/> Name: { name }
                     </Col>
                     <Col>
-                        <Button size="sm" className="clockin-btn" onClick={ this.punchInHandler } >Clock in</Button>{' '}
+                    <Button size="sm" className="clockin-btn" onClick={ this.punchInHandler } >Clock in</Button>{' '}
                     </Col>
                     <Col>
-                        <Button size="sm" className="clockout-btn" onClick={ this.punchOutHandler } >Clock out</Button>{' '}
+                        <Button size="sm" className="clockout-btn" onClick={ this.clockOutButton } >Clock out</Button>{' '}
                     </Col>
                 </Row>
                 <Row className="mt-2">
@@ -104,70 +118,23 @@ class Dashboard extends Component {
                 </Row>
         </Container>
 
-                {/* <DataTable
-            keys="name"
-            columns={columns}
-            initialData={data}
-            initialPageLength={5}
-            clockinTable/> */}
+        {/* <BootstrapTable data={ data } striped hover pagination version='4' className="container clockin-table">
+                <TableHeaderColumn isKey dataField='employee_email'>Employee Email</TableHeaderColumn>
+                <TableHeaderColumn dataField='clock_date'>Date</TableHeaderColumn>
+                <TableHeaderColumn dataField='clock_in'>Clocked In</TableHeaderColumn>
+                <TableHeaderColumn dataField='clock_out'>Clocked Out</TableHeaderColumn>
+        </BootstrapTable> */}
 
-            {/* <BootstrapTable
-            data={ data }
-            columns={ columns }
-            /> */}
-
-            {   // NEED TO USE CLOCK BACKEND
-                // <BootstrapTable data={ prop } striped hover pagination version='4' className="container clockin-table">
-                //     <TableHeaderColumn isKey dataField='employee_email'>Employee Email</TableHeaderColumn>
-                //     <TableHeaderColumn dataField='date'>Date</TableHeaderColumn>
-                //     <TableHeaderColumn dataField='clocked_in'>Clocked In</TableHeaderColumn>
-                //     <TableHeaderColumn dataField='clocked_out'>Clocked Out</TableHeaderColumn>
-                //     <TableHeaderColumn dataField='notes'>Notes</TableHeaderColumn>
-                // </BootstrapTable>
-            }
-
-
-
-            {/* <Table striped bordered hover size="sm" responsive className="clockin-table container">
-                <thead>
-                    <tr>
-                    <th>Date</th>
-                    <th>Clocked In</th>
-                    <th>Clocked Out</th>
-                    <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>October 27, 2020</td>
-                    <td>9:30 AM</td>
-                    <td>6:30 PM</td>
-                    <td>worked in call center and processed applications</td>
-                    </tr>
-                    <tr>
-                    <td>October 28, 2020</td>
-                    <td>9:32 AM</td>
-                    <td>6:48 PM</td>
-                    <td>call center</td>
-                    </tr>
-                    <tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr>
-                </tbody>
-            </Table> */}
-            <Modal show={this.state.isOpen} onHide={this.closeModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Time </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Are you sure you would like to clock out?</Modal.Body>
-                <Modal.Footer>
-                    <Button className="confirm-btn" onClick={ this.closeModal }>Okay</Button>
-                    <Button className="cancel-btn" onClick={ this.closeModal }>Cancel</Button>
-                </Modal.Footer>
-            </Modal>
+        <Modal show={this.state.isOpen} onHide={this.closeModal}>
+            <Modal.Header closeButton>
+                <Modal.Title>Clock Out</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Are you sure you would like to clock out?</Modal.Body>
+            <Modal.Footer>
+                <Button className="confirm-btn" onClick={ this.punchOutHandler }>Clock Out</Button>
+                <Button className="cancel-btn" onClick={ this.closeModal }>Cancel</Button>
+            </Modal.Footer>
+        </Modal>
 
         <footer className="footer py-3">
             <div className="attributions">

@@ -42,9 +42,11 @@ class Admin extends Component {
         })
     }
 
+    clockOutButton = () => this.setState({ isOpen: true })
+
+
     punchOutHandler = e => {
-        this.setState({ isOpen: true })
-        if(this.state.selectOut === 'Okay'){}
+        if(this.state.selectOut === 'Clock Out'){}
         axios.post('http://localhost:5000/clockOut', { 
             employee_email: this.props.user.email, 
             clock_out: new Date().toLocaleTimeString()
@@ -83,13 +85,13 @@ class Admin extends Component {
         <Container className="mt-5 ml-5 employee-info" fluid>
                 <Row>
                     <Col>
-                    <Image src={user} className="dashboard-icons"/> Name: { name }
+                        <Image src={user} className="dashboard-icons"/> Name: { name }
                     </Col>
                     <Col>
                         <Button size="sm" className="clockin-btn" onClick={ this.punchInHandler } >Clock in</Button>{' '}
                     </Col>
                     <Col>
-                        <Button size="sm" className="clockout-btn" onClick={ this.punchOutHandler } >Clock out</Button>{' '}
+                        <Button size="sm" className="clockout-btn" onClick={ this.clockOutButton } >Clock out</Button>{' '}
                     </Col>
                 </Row>
                 <Row className="mt-2">
@@ -117,7 +119,7 @@ class Admin extends Component {
             </Modal.Header>
             <Modal.Body>Are you sure you would like to clock out?</Modal.Body>
             <Modal.Footer>
-                <Button className="confirm-btn" onClick={ this.closeModal }>Okay</Button>
+                <Button className="confirm-btn" onClick={ this.punchOutHandler }>Clock Out</Button>
                 <Button className="cancel-btn" onClick={ this.closeModal }>Cancel</Button>
             </Modal.Footer>
         </Modal>
