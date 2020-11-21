@@ -16,10 +16,10 @@ import {
 } from 'react-bootstrap';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import user from '../images/user.png';
-import paginationFactory from 'react-bootstrap-table2-paginator';
+import badge from '../images/badge.png';
+import userEmail from '../images/email.png';
 import axios from 'axios';
-
-const DataTable = require('react-data-components').DataTable;
+import moment from 'moment-timezone';
 
 class Dashboard extends Component {
     
@@ -43,13 +43,30 @@ class Dashboard extends Component {
 
     punchOutHandler = e => {
         this.setState({ isOpen: true })
-
+        const today = new Date()
+        console.log('PUNCH OUT HANDLER')
         if(this.state.selectOut === 'Okay')
         axios.post('http://localhost:5000/clockOut', { 
             employee_email: this.props.user.email, 
-            clock_out: new Date().toLocaleTimeString()
+            clock_out: today.toLocaleTimeString('en-US')
         })
     }
+
+    // componentDidMount() {
+    //     axios.get('http://localhost:5000/clock')
+    //         .then(res => {
+                
+    //             this.setState({ employees:  res.data.map(user => {
+    //                 return {
+    //                     clock_in: user.clock_in.split('T')[1].substring(0, 5),
+    //                     clock_date: moment(user.clock_date.split('T')[0]).format('L'),
+    //                     clock_out: user.clock_out ? user.clock_out.split('T')[1].substring(0, 5): null,
+    //                     employee_email: user.employee_email
+    //                 }
+    //             })})
+                
+    //         })
+    // }
 
     render() {
     
@@ -66,7 +83,7 @@ class Dashboard extends Component {
         <Container className="mt-5 ml-5 employee-info" fluid>
                 <Row>
                     <Col>
-                    <Image src={user} className="dashboard-icons"/> Name: { name }
+                        <Image src={user} className="dashboard-icons"/> Name: { name }
                     </Col>
                     <Col>
                         <Button size="sm" className="clockin-btn" onClick={ this.punchInHandler } >Clock in</Button>{' '}
@@ -77,12 +94,12 @@ class Dashboard extends Component {
                 </Row>
                 <Row className="mt-2">
                     <Col>
-                        Department: { department }
+                        <Image src={badge} className="dashboard-icons"/> Name: { name }Department: { department }
                     </Col>
                 </Row>
                 <Row className="mt-3">
                     <Col>
-                        Email: { email }
+                        <Image src={userEmail} className="dashboard-icons"/> Name: { name }Email: { email }
                     </Col>
                 </Row>
         </Container>

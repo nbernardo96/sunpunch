@@ -17,15 +17,17 @@ import {
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import user from '../images/user.png';
 import badge from '../images/badge.png';
-import userEmail from '../images/email.png'
+import userEmail from '../images/email.png';
 import axios from 'axios';
+import moment from 'moment-timezone';
 
 class Admin extends Component {
     
     state = {
         isOpen: false,
         punched: undefined,
-        selectOut: ''
+        selectOut: '',
+        employees: []
     }
 
     closeModal = e => {
@@ -42,18 +44,33 @@ class Admin extends Component {
 
     punchOutHandler = e => {
         this.setState({ isOpen: true })
-
-        if(this.state.selectOut === 'Okay')
+        if(this.state.selectOut === 'Okay'){}
         axios.post('http://localhost:5000/clockOut', { 
             employee_email: this.props.user.email, 
             clock_out: new Date().toLocaleTimeString()
         })
     }
 
+    componentDidMount() {
+        axios.get('http://localhost:5000/clock')
+            .then(res => {
+                
+                this.setState({ employees:  res.data.map(user => {
+                    return {
+                        clock_in: user.clock_in.split('T')[1].substring(0, 5),
+                        clock_date: moment(user.clock_date.split('T')[0]).format('L'),
+                        clock_out: user.clock_out ? user.clock_out.split('T')[1].substring(0, 5): null,
+                        employee_email: user.employee_email
+                    }
+                })})
+                
+            })
+    }
+
+
     render() {
     
     let prop = {};
-    let data = [];
 
     prop = this.props.user
     console.log(prop)
@@ -62,8 +79,6 @@ class Admin extends Component {
     
     return (
         <div>
-        
-        <h1>ADMIN</h1>
         
         <Container className="mt-5 ml-5 employee-info" fluid>
                 <Row>
@@ -89,76 +104,23 @@ class Admin extends Component {
                 </Row>
         </Container>
 
-                {/* <DataTable
-            keys="name"
-            columns={columns}
-            initialData={data}
-            initialPageLength={5}
-            clockinTable/> */}
+        <BootstrapTable data={ this.state.employees } striped hover pagination version='4' className="container clockin-table">
+                <TableHeaderColumn isKey dataField='employee_email'>Employee Email</TableHeaderColumn>
+                <TableHeaderColumn dataField='clock_date'>Date</TableHeaderColumn>
+                <TableHeaderColumn dataField='clock_in'>Clocked In</TableHeaderColumn>
+                <TableHeaderColumn dataField='clock_out'>Clocked Out</TableHeaderColumn>
+        </BootstrapTable>
 
-            {/* <BootstrapTable
-            data={ data }
-            columns={ columns }
-            /> */}
-
-                 {/* <BootstrapTable data={ prop } striped hover pagination version='4' className="container clockin-table">
-                     <TableHeaderColumn isKey dataField='employee_email'>Employee Email</TableHeaderColumn>
-                     <TableHeaderColumn dataField='date'>Date</TableHeaderColumn>
-                     <TableHeaderColumn dataField='clocked_in'>Clocked In</TableHeaderColumn>
-                     <TableHeaderColumn dataField='clocked_out'>Clocked Out</TableHeaderColumn>
-                     <TableHeaderColumn dataField='notes'>Notes</TableHeaderColumn>
-                 </BootstrapTable> */}
-
-                <BootstrapTable data={ data } striped hover pagination version='4' className="container clockin-table">
-                     <TableHeaderColumn isKey dataField='employee_email'>Employee Email</TableHeaderColumn>
-                     <TableHeaderColumn dataField='date'>Date</TableHeaderColumn>
-                     <TableHeaderColumn dataField='clocked_in'>Clocked In</TableHeaderColumn>
-                     <TableHeaderColumn dataField='clocked_out'>Clocked Out</TableHeaderColumn>
-                     <TableHeaderColumn dataField='notes'>Notes</TableHeaderColumn>
-                 </BootstrapTable>
-
-                 
-
-            {/* <Table striped bordered hover size="sm" responsive className="clockin-table container">
-                <thead>
-                    <tr>
-                    <th>Date</th>
-                    <th>Clocked In</th>
-                    <th>Clocked Out</th>
-                    <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>October 27, 2020</td>
-                    <td>9:30 AM</td>
-                    <td>6:30 PM</td>
-                    <td>worked in call center and processed applications</td>
-                    </tr>
-                    <tr>
-                    <td>October 28, 2020</td>
-                    <td>9:32 AM</td>
-                    <td>6:48 PM</td>
-                    <td>call center</td>
-                    </tr>
-                    <tr>
-                    <td>October 29, 2020</td>
-                    <td>6:23 AM</td>
-                    <td>3:00 PM</td>
-                    <td>was asked to come in early, left early</td>
-                    </tr>
-                </tbody>
-            </Table> */}
-            <Modal show={this.state.isOpen} onHide={this.closeModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Time </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Are you sure you would like to clock out?</Modal.Body>
-                <Modal.Footer>
-                    <Button className="confirm-btn" onClick={ this.closeModal }>Okay</Button>
-                    <Button className="cancel-btn" onClick={ this.closeModal }>Cancel</Button>
-                </Modal.Footer>
-            </Modal>
+        <Modal show={this.state.isOpen} onHide={this.closeModal}>
+            <Modal.Header closeButton>
+                <Modal.Title>Time </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Are you sure you would like to clock out?</Modal.Body>
+            <Modal.Footer>
+                <Button className="confirm-btn" onClick={ this.closeModal }>Okay</Button>
+                <Button className="cancel-btn" onClick={ this.closeModal }>Cancel</Button>
+            </Modal.Footer>
+        </Modal>
 
         <footer className="footer py-3">
             <div className="attributions">
